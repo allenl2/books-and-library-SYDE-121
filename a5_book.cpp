@@ -12,3 +12,15 @@ void Book::print() {
 		<< book_authors << " "
 		<< date_of_publication << endl;
 }
+
+string Book::get_title() {
+	return book_title;
+}
+
+string Book::get_authors() {
+	return book_authors;
+}
+
+string Book::get_dop() {
+	return date_of_publication;
+}

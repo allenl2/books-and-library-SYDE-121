@@ -20,4 +20,5 @@ public:
 	string get_authors();
 	string get_dop();
 };
+
 #endif 

@@ -1,6 +1,11 @@
 #include "a5_library.hpp"
 
-Library::Library() {}
+Library::Library() {
+	my_books.reserve(100);//doesnt need to do anything
+}
+
+Library::Library(vector<Book> new_books) :
+	my_books(new_books) {}
 
 bool Library::insert(string new_title, string new_authors, string new_dop) {
 	// TODO: write steps for the insert function
@@ -26,22 +31,46 @@ bool Library::insert(Book new_book) {
 	return true;
 }
 
-bool Library::remove(Book new_book) {
-	// TODO: write steps for the remove function
+bool Library::remove(string book_title, string book_author, string book_dop) {
+	//iterates through all Books in the vector
+	for (int i = 0; i < my_books.size(); i++) {
+		Book current_book = my_books.at(i);
 
-	// find the location for the entered book
-	// swap that location with the last location in the vector
-	// remove the last element in the vector
-	swap(my_books[2], my_books[5]);
-	my_books.pop_back();
+		//checks to see if the current book matches the specified parameters from the function call, removes the Book if all three match and return true
+		if (current_book.get_title() == book_title &&
+			current_book.get_authors() == book_author &&
+			current_book.get_dop() == book_dop) {
 
-	my_books.erase(my_books.begin() + 5);
+			my_books.erase(my_books.begin() + i);
+			return true;
+		}
+	}
+	//if no match is found, then return false
+	return false;
+}
 
-	return true;
+bool Library::remove(Book book) {
+	//iterates through all Books in the vector
+	for (int i = 0; i < my_books.size(); i++) {
+		Book current_book = my_books.at(i);
+
+		//checks to see if the current book has same title, author, dop as the specified Book in the function call, removes the Book if a match is found and returns true
+		if (current_book.get_title() == book.get_title() &&
+			current_book.get_authors() == book.get_authors() &&
+			current_book.get_dop() == book.get_dop()) {
+
+			my_books.erase(my_books.begin() + i);
+			return true;
+		}
+	}
+	//if no match is found, return false
+	return false;
 }
 
 void Library::print() {
-	// iterate through elements of the library
-		// call my_books[index].print(); on each book
+	//iterates through the entire vector of Books, outputs the details of each to console
+	for (int i = 0; i < my_books.size(); i++) {
+		cout << "(" << i + 1 << ") ";
+		my_books.at(i).print();
+	}
 }
-

@@ -9,17 +9,25 @@ using namespace std;
 class Library {
 	vector<Book> my_books;
 public:
-	// default/empty constructor is included explicitly
+	//PURPOSE: Default constructor with no parameters, implicitly initializes the library
 	Library();
+
+	//PURPOSE: Parametric constructor with a vector of type <Book>, stores all values in the vector in the library
 	Library(vector<Book> new_books);
+
+	//PURPOSE: Service function that outputs all the books stored in the library
+	void print();
 
 	bool insert(string, string, string);
 	bool insert(Book);
 
-	bool remove(string, string, string);
-	bool remove(Book);
+	//PURPOSE: Function to remove the Book with specified title, author, and date of publication from the library
+	bool remove(string book_title, string book_author, string book_dop);
 
-	void print();
+	//PURPOSE: Function to remove the specified instance of Book from the library
+	bool remove(Book book);
+
 
 };
+
 #endif
