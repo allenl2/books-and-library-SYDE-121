@@ -1,5 +1,7 @@
 #include "a5_book.hpp"
 
+Book::Book() {}
+
 Book::Book(string new_title, string new_authors, string new_dop) :
 	book_title(new_title),
 	book_authors(new_authors),

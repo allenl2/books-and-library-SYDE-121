@@ -8,15 +8,18 @@ using namespace std;
 
 class Library {
 	vector<Book> my_books;
-
 public:
-	//PURPOSE: Default constructor with no parameters, implicitly initializes the library
+	// default/empty constructor is included explicitly
 	Library();
-
-	//PURPOSE: Parametric constructor with a vector of type <Book>, stores all values in the vector in the library
 	Library(vector<Book> new_books);
 
-	//PURPOSE: Service function that outputs all the books stored in the library
+	bool insert(string, string, string);
+	bool insert(Book);
+
+	bool remove(string, string, string);
+	bool remove(Book);
+
 	void print();
+
 };
 #endif
