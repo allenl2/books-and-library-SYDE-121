@@ -76,7 +76,8 @@ bool Library::remove(Book book) {
 void Library::print() {
 	//iterates through the entire vector of Books, outputs the details of each to console
 	for (int i = 0; i < my_books.size(); i++) {
-		cout << "(" << i + 1 << ") ";
+		cout << "(" << i + 1 << ") " << endl;
 		my_books.at(i).print();
+		cout << endl;
 	}
 }
