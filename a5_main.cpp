@@ -4,12 +4,19 @@
 * TESTING SCENARIOS
 *  1) Library Print Function - creates several instances of Book, adds them to a vector, then creates an instance of Library using the vector parametric constructor. The print function is then called. The test also outputs the expected values for comparison. Another test is done for an instance of Library that is empty (ie. created with default constructor). The library is printed and expected values (nothing) are also printed.
 * 
-*  2) Library Constructors - create instances of Library using the vector parametric constructor (once with a vector conntaining Books, the other with an empty vector), and default constructor. Then prints out each of the libraries for verification.
+*  2) Library Constructors - create instances of Library using the vector parametric constructor (once with a vector containing Books, the other with an empty vector), and default constructor. Then prints out each of the libraries for verification.
 * 
 *  3) Library Removal - creates two instances of Library filled with instances of Books.  It first checks the remove function (by details - title, author, date) by removing the first Book, a general Book, and the last Book. Then checks the same function but with  a title, author, and date that is not correspond to any Book. Then checks the remove   function (by Book) by removing the first Book, a general Book, and the last Book. Then checks the same function but with an instance of Book that is not in the Library. For  each test, output the results to console.
 * 
+*  5) Library Insertion - creates two instances of Library filled with vectors holding Book instances. First, checks if the insert function works using passed Book attributes in both Library instances. Then, checks insert function with passed Book instances in each Library instance. Next, ensure that a Book already in the Library instance can't be added again. All results from these tests are printed to the console, as well as the final Library instances after new books are inserted. 
+* 
+*  5) Book Print Function - creates an instance of Book with default constructor, then calls print function in Book, ensuring that all attributes are printed regardless of whether or not they are specified.
+* 
+*  6) Book Constructors - creates four instances of Book for each constructor, then calls the Book print function for each.  
+* 
 * LIMITATIONS
 * - during the ininitalization of Library, the vector is not checked for duplicates, so they may exist in the final result (this may lead to errors in insert/remove)
+* - does not consider that different books may be entered without any attributes (n/a); for insertion, would be considered duplicate books and cannot be added if one already exists (causes program to abort).
 */
 
 #include <iostream>
@@ -21,24 +28,63 @@
 using namespace std;
 
 void test_book_print() {
-
-    Book my_book("title", "author");
-    my_book.print();
+    Book my_book1;
+    my_book1.print();
 }
 
-void test_book_insertion1() {
-    // setup
-    Library my_library;
-    Book my_book1("test1", "atest2", "dptest3");
-    Book my_book2("test2", "atest2", "dptest3");
-    Book my_book3("test3", "atest2", "dptest3");
+void test_book_constructors() {
+    Book my_book1;
+    Book my_book2("Book2");
+    Book my_book3("Book3", "Author3");
+    Book my_book4("Book4", "Author4", "Date4");
+    
+    cout << "Book 1 - Default constructor: " << endl;
+    my_book1.print();
+    cout << "Book 2 - Only title provided: " << endl;
+    my_book2.print();
+    cout << "Book 3 - Only title & author provided: " << endl;
+    my_book3.print();
+    cout << "Book 4 - All attributes provided: " << endl;
+    my_book4.print();
+}
 
-    // test scenario
-    assert(my_library.insert(my_book1));
-    assert(my_library.insert(my_book2));
-    assert(my_library.insert(my_book3));
+void test_book_insertion() {
+    // setup by creating some books and a Library vector
+    vector <Book> my_books;
+    Book my_book1("Title1", "Author1", "Date1");
+    Book my_book2("Title2", "Author2", "Date2");
+    Book my_book3("Title3", "Author3", "Date3");
+    Book my_book4("Title4", "Author4", "Date4");
+    Book my_book5("Title5", "Author5", "Date5");
 
-    my_library.print();
+    // add some books into Library vector
+    my_books.push_back(my_book1);
+    my_books.push_back(my_book2);
+    my_books.push_back(my_book3);
+
+    // add vector into different instances of Library
+    Library test_library1(my_books);
+    Library test_library2(my_books);
+
+    // test scenario: insert using string attributes
+    assert(test_library1.insert("Title4", "Author4", "Date4"));
+    assert(test_library1.insert("Title5", "Author5", "Date5"));
+    cout << "New books were successfully inserted by passing string attributes." << endl;
+
+    // test scenario: insert using Book instances
+    assert(test_library2.insert(my_book4)); 
+    assert(test_library2.insert(my_book5)); 
+    cout << "New books were successfully inserted by passing Book instances." << endl;
+
+    // test scenario: try inserting an existing book using both attributes and Book instance
+    cout << (test_library1.insert(my_book1) ? "Duplicate book added to library" : "Could not add duplicate book to library") << endl;
+    cout << (test_library1.insert("Title2", "Author2", "Date2") ? "Duplicate book added to library" : "Could not add duplicate book to library") << endl;
+  
+    cout << "Library 1:" << endl;
+    test_library1.print();
+
+    cout << "Library 2:" << endl;
+    test_library2.print();
 
     // teardown
     // automatic destruction (freeing of memory) of these objects
@@ -151,10 +197,12 @@ void test_book_removal() {
 }
 
 void execute_tests() {
-    //test_book_insertion1();
+    //test_book_print();
+    //test_book_constructors();
+    test_book_insertion();
     //test_library_constructors();
     //test_library_print();
-    test_book_removal();
+    //test_book_removal();
 }
 
 int main() {

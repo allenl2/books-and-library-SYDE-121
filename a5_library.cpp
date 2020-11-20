@@ -19,15 +19,15 @@ bool Library::insert(string new_title, string new_authors, string new_dop) {
 			my_books[index].get_authors() == new_authors &&
 			my_books[index].get_dop() == new_dop) {
 
-			cout << "Insertion failed. A book with these details already exists in Library:" << endl;
-			my_books[index].print();
+			//cout << "Insertion failed. A book with these details already exists in Library:" << endl;
+			//my_books[index].print();
 			return false;
 		}
 	}
 	// if book with matching attributes does not already exist, insert it into the vector & return true
 	my_books.push_back(new_book);
-	cout << "Thank you, the following book was inserted into Library:" << endl;
-	new_book.print();
+	//cout << "Thank you, the following book was inserted into Library:" << endl;
+	//new_book.print();
 	return true;
 }
 
@@ -40,16 +40,16 @@ bool Library::insert(Book new_book) {
 			my_books[index].get_authors() == new_book.get_authors() &&
 			my_books[index].get_dop() == new_book.get_dop()) {
 
-			cout << "Insertion failed. A book with these details already exists in Library." << endl;
-			my_books[index].print();
+			//cout << "Insertion failed. A book with these details already exists in Library." << endl;
+			//my_books[index].print();
 			return false;
 		}
 	}
 	
 	// if book with matching attributes does not already exist, insert it into the vector & return true
 	my_books.push_back(new_book);
-	cout << "Thank you, the following book was inserted into Library:" << endl;
-	new_book.print();
+	//cout << "Thank you, the following book was inserted into Library:" << endl;
+	//new_book.print();
 	return true;
 }
 
