@@ -54,7 +54,10 @@ bool Library::insert(Book new_book) {
 }
 
 bool Library::remove(string book_title, string book_author, string book_dop) {
-	//iterates through all Books in the vector
+	Book remove_book(book_title, book_author, book_dop);
+	return remove(remove_book);
+
+	/*//iterates through all Books in the vector
 	for (int i = 0; i < my_books.size(); i++) {
 
 		Book current_book = my_books.at(i);
@@ -69,7 +72,7 @@ bool Library::remove(string book_title, string book_author, string book_dop) {
 		}
 	}
 	//if no match is found, then return false
-	return false;
+	return false;*/
 }
 
 bool Library::remove(Book book) {
