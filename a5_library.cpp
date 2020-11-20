@@ -54,25 +54,9 @@ bool Library::insert(Book new_book) {
 }
 
 bool Library::remove(string book_title, string book_author, string book_dop) {
+	//creates an instance of Book with the specified parameters, and calls remove function by Book
 	Book remove_book(book_title, book_author, book_dop);
 	return remove(remove_book);
-
-	/*//iterates through all Books in the vector
-	for (int i = 0; i < my_books.size(); i++) {
-
-		Book current_book = my_books.at(i);
-
-		//checks to see if the current book matches the specified parameters from the function call, removes the Book if all three match and return true
-		if (current_book.get_title() == book_title &&
-			current_book.get_authors() == book_author &&
-			current_book.get_dop() == book_dop) {
-
-			my_books.erase(my_books.begin() + i);
-			return true;
-		}
-	}
-	//if no match is found, then return false
-	return false;*/
 }
 
 bool Library::remove(Book book) {
