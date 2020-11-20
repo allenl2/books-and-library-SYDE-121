@@ -6,6 +6,12 @@
 
 using namespace std;
 
+void test_book_print() {
+
+    Book my_book("title", "author");
+    my_book.print();
+}
+
 void test_book_insertion1() {
     // setup
     Library my_library;
