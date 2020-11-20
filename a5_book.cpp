@@ -1,16 +1,29 @@
 #include "a5_book.hpp"
 
-Book::Book() {}
+Book::Book() :  // default, all attributes set to n/a 
+	book_title("n/a"),
+	book_authors("n/a"),
+	date_of_publication("n/a") {}
 
-Book::Book(string new_title, string new_authors, string new_dop) :
+Book::Book(string new_title) : // only title is provided, authors & date of publication are n/a
+	book_title(new_title),
+	book_authors("n/a"),
+	date_of_publication("n/a") {}
+
+Book::Book(string new_title, string new_authors) : // only title & authors provided, date of publication is n/a
+	book_title(new_title),
+	book_authors(new_authors),
+	date_of_publication("n/a") {}
+
+Book::Book(string new_title, string new_authors, string new_dop) : // all attributes specified
 	book_title(new_title),
 	book_authors(new_authors),
 	date_of_publication(new_dop) {}
 
-void Book::print() {
-	cout << book_title << " "
-		<< book_authors << " "
-		<< date_of_publication << endl;
+void Book::print() { // prints the current values stored inside book object
+	cout << "Title: " << book_title << endl;
+	cout << "Author(s): " << book_authors << endl;
+	cout << "Publication Date: " << date_of_publication << endl;
 }
 
 string Book::get_title() {
