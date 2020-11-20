@@ -188,11 +188,11 @@ void test_book_removal() {
 }
 
 void execute_tests() {
-    //test_book_print();
+    test_book_print();
     //test_book_constructors();
-    test_book_insertion();
+    //test_book_insertion();
     //test_library_constructors();
-    test_library_print();
+    //test_library_print();
     //test_book_removal();
 }
 

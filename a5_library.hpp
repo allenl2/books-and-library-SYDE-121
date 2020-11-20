@@ -20,7 +20,10 @@ public:
 	//PURPOSE: Service function that outputs all the books stored in the library
 	void print();
 
+	//PURPOSE: Function to insert an instance of 'Book' with specified title, author, and date of publication into the library. Returns true if a Book is inserted, false if a duplicate is found.
 	bool insert(string, string, string);
+
+	//PURPOSE: Function to insert an instance of 'Book' into the library. Returns true if a Book is inserted, false if a duplicate is found.
 	bool insert(Book);
 
 	//PURPOSE: Function to remove an instance of 'Book' with specified title, author, and date of publication from the library. Returns true if a Book is removed, false if not.
