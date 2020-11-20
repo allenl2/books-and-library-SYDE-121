@@ -9,26 +9,47 @@ Library::Library(vector<Book> new_books) :
 	my_books(new_books) {}
 
 bool Library::insert(string new_title, string new_authors, string new_dop) {
-	// TODO: write steps for the insert function
-	Book insert_book(new_title, new_authors, new_dop);
-	// iterate through the vector to see if that book already exists
-	// if it does not exist, insert it into the vector
-	my_books.push_back(insert_book);
 
-	return false;
+	Book new_book(new_title, new_authors, new_dop);
+
+	// iterates through books in vector for comparison 	
+	for (int index = 0; index < my_books.size(); index++) {
+		// checks to see if a book matching those in parameters exists; if so, new book cannot be inserted and false is returned
+		if (my_books[index].get_title() == new_title &&
+			my_books[index].get_authors() == new_authors &&
+			my_books[index].get_dop() == new_dop) {
+
+			cout << "Insertion failed. A book with these details already exists in Library:" << endl;
+			my_books[index].print();
+			return false;
+		}
+	}
+	// if book with matching attributes does not already exist, insert it into the vector & return true
+	my_books.push_back(new_book);
+	cout << "Thank you, the following book was inserted into Library:" << endl;
+	new_book.print();
+	return true;
 }
 
 bool Library::insert(Book new_book) {
-	// TODO: write steps for the insert function
 
-	// iterate through the vector to see if that book already exists
-	if (my_books[0].get_title() == new_book.get_title() &&
-		my_books[0].get_authors() == new_book.get_authors() &&
-		my_books[0].get_dop() == new_book.get_dop())
-	// if it does not exist, insert it into the vector
+	// iterates through books in vector for comparison 	
+	for (int index = 0; index < my_books.size(); index++) {
+		// checks to see if a book matching those in parameters exists; if so, new book cannot be inserted and false is returned
+		if (my_books[index].get_title() == new_book.get_title() &&
+			my_books[index].get_authors() == new_book.get_authors() &&
+			my_books[index].get_dop() == new_book.get_dop()) {
+
+			cout << "Insertion failed. A book with these details already exists in Library." << endl;
+			my_books[index].print();
+			return false;
+		}
+	}
+	
+	// if book with matching attributes does not already exist, insert it into the vector & return true
 	my_books.push_back(new_book);
-
-	my_books[0].print();
+	cout << "Thank you, the following book was inserted into Library:" << endl;
+	new_book.print();
 	return true;
 }
 
