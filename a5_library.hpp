@@ -7,7 +7,9 @@
 using namespace std;
 
 class Library {
+
 	vector<Book> my_books;
+
 public:
 	//PURPOSE: Default constructor with no parameters, implicitly initializes the library
 	Library();
@@ -21,13 +23,11 @@ public:
 	bool insert(string, string, string);
 	bool insert(Book);
 
-	//PURPOSE: Function to remove the Book with specified title, author, and date of publication from the library
+	//PURPOSE: Function to remove an instance of 'Book' with specified title, author, and date of publication from the library. Returns true if a Book is removed, false if not.
 	bool remove(string book_title, string book_author, string book_dop);
 
-	//PURPOSE: Function to remove the specified instance of Book from the library
+	//PURPOSE: Function to remove the specified instance of Book from the library. Returns true if a Book is removed, false if not.
 	bool remove(Book book);
-
-
 };
 
 #endif

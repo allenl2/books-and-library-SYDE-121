@@ -1,7 +1,8 @@
 #include "a5_library.hpp"
 
 Library::Library() {
-	my_books.reserve(100);//doesnt need to do anything
+	//Reserves 100 spaces in memory for the vector if nothing is specified
+	my_books.reserve(100);
 }
 
 Library::Library(vector<Book> new_books) :
@@ -34,6 +35,7 @@ bool Library::insert(Book new_book) {
 bool Library::remove(string book_title, string book_author, string book_dop) {
 	//iterates through all Books in the vector
 	for (int i = 0; i < my_books.size(); i++) {
+
 		Book current_book = my_books.at(i);
 
 		//checks to see if the current book matches the specified parameters from the function call, removes the Book if all three match and return true
@@ -52,9 +54,10 @@ bool Library::remove(string book_title, string book_author, string book_dop) {
 bool Library::remove(Book book) {
 	//iterates through all Books in the vector
 	for (int i = 0; i < my_books.size(); i++) {
+
 		Book current_book = my_books.at(i);
 
-		//checks to see if the current book has same title, author, dop as the specified Book in the function call, removes the Book if a match is found and returns true
+		//checks to see if the current book has same details as the specified Book in the function call, removes the Book if a match is found and returns true
 		if (current_book.get_title() == book.get_title() &&
 			current_book.get_authors() == book.get_authors() &&
 			current_book.get_dop() == book.get_dop()) {
