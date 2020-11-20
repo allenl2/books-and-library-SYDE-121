@@ -26,6 +26,7 @@ void Book::print() { // prints the current values stored inside book object
 	cout << "Publication Date: " << date_of_publication << endl;
 }
 
+// getter functions for each Book attribute
 string Book::get_title() {
 	return book_title;
 }

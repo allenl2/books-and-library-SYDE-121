@@ -28,16 +28,21 @@
 using namespace std;
 
 void test_book_print() {
+    // create a Book object
     Book my_book1;
+    
+    // call print function to ensure all attributes of object are printed
     my_book1.print();
 }
 
 void test_book_constructors() {
-    Book my_book1;
-    Book my_book2("Book2");
-    Book my_book3("Book3", "Author3");
-    Book my_book4("Book4", "Author4", "Date4");
+    // create multiple Book objects
+    Book my_book1; // no parameters (default)
+    Book my_book2("Book2"); // only title parameter
+    Book my_book3("Book3", "Author3"); // title & author parameters
+    Book my_book4("Book4", "Author4", "Date4"); // all parameters available
     
+    // print books to ensure the output matches input & constructor
     cout << "Book 1 - Default constructor: " << endl;
     my_book1.print();
     cout << "Book 2 - Only title provided: " << endl;
@@ -85,9 +90,6 @@ void test_book_insertion() {
 
     cout << "Library 2:" << endl;
     test_library2.print();
-
-    // teardown
-    // automatic destruction (freeing of memory) of these objects
 }
 
 void test_library_constructors() {
